@@ -9,8 +9,7 @@
     <div id="todo-app">
         <h1>{{ title }}</h1>
 
-        <input type="text" v-model="newTodo" :style="maxLenInputStyle" /><br />
-        {{ newTodo }}
+        <input type="text" v-model="newTodo" :style="maxLenInputStyle" v-focus /><br />
 
         <ul>
             <!-- v-for=(el, index) in array -->

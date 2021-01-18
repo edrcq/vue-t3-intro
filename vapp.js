@@ -5,6 +5,13 @@ Vue.component('list-item', {
         text: { type: String, default: 'test' }
     }
 })
+Vue.directive('focus', {
+    // Quand l'élément lié est inséré dans le DOM...
+    inserted: function (el) {
+      // L'élément prend le focus
+      el.focus()
+    }
+})
 
 const vapp = new Vue({
     el: '#todo-app',
