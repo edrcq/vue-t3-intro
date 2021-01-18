@@ -6,20 +6,30 @@
     <title>Vue Test - ToDo</title>
 </head>
 <body>
+    <style>
+        .textbarre {
+            text-decoration: line-through;
+        }
+    </style>
     <div id="todo-app">
-        <h1>{{ title }}</h1>
+        <div v-html="title"></div>
 
-        <input type="text" v-model="newTodo" :style="maxLenInputStyle" v-focus /><br />
+        <input @keyup.enter="addItem" type="text" v-model="newTodo" :style="maxLenInputStyle" v-focusa /><br />
+        <button v-on:click="addItem">Ajouter à la liste</button>
 
         <ul>
             <!-- v-for=(el, index) in array -->
-            <list-item
-                v-for="(str_todo, index) in todos"
+            <li
+                v-for="(todo, index) in todos"
                 :key="`todo_${index}`"
-                :text="str_todo"
-            ></list-item>
+            >
+                <span :class="{ textbarre: todo.done }">{{ todo.text }}</span>
+                <input type="checkbox" v-model="todo.done" />
+            </li>
         </ul>
     </div>
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="vapp.js"></script>
